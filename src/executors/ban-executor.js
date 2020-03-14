@@ -22,12 +22,12 @@ const ban = (operation) => {
         return driver
     }
 
-    if (driver.status === codes.DRIVER_BANNED) {
+    if (driver.status === codes.DRIVER_STATUS_BANNED) {
         driver.violations.push(codes.DRIVER_ALREADY_BANNED)
         return driver
     }
 
-    driver.status = codes.DRIVER_BANNED
+    driver.status = codes.DRIVER_STATUS_BANNED
     cache.DRIVERS.set(operation.driver, util.copy(driver))
     return driver
 }
