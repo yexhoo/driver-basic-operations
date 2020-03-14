@@ -41,19 +41,19 @@ describe('Ban', () => {
         expect(op2.onRide).is.equal(true)
         
         expect(op3.onRide).is.equal(true)
-        expect(op3.status).is.equal(codes.DRIVER_ACTIVATED)
+        expect(op3.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op3.violations[0]).is.equal(codes.DRIVER_ON_RIDE)
 
         expect(op4.onRide).is.equal(false)
-        expect(op4.status).is.equal(codes.DRIVER_ACTIVATED)
+        expect(op4.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op4.violations.length).is.equal(0)
 
         expect(op5.onRide).is.equal(false)
-        expect(op5.status).is.equal(codes.DRIVER_BANNED)
+        expect(op5.status).is.equal(codes.DRIVER_STATUS_BANNED)
         expect(op5.violations.length).is.equal(0)
 
         expect(op6.onRide).is.equal(false)
-        expect(op6.status).is.equal(codes.DRIVER_BANNED)
+        expect(op6.status).is.equal(codes.DRIVER_STATUS_BANNED)
         expect(op6.violations[0]).is.equal(codes.DRIVER_ALREADY_BANNED)
     });
 

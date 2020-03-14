@@ -17,19 +17,26 @@ exports.get = () => {
 
 const accept = (operation) => {
 
-    if (operation.ride.status === codes.RIDE_START) {
-        operation = acceptRide(operation)
-    } else if (operation.ride.status === codes.RIDE_FINISHED) {
-        operation = finishRide(operation)
+    const driver = util.copy(cache.DRIVERS.get(operation.driver))
+
+    if (driver.status === codes.DRIVER_STATUS_BANNED) {
+        driver.violations.push(codes.DRIVER_BANNED)
+        return driver
     }
 
-    return operation
+    if (operation.ride.status === codes.RIDE_START) {
+        return acceptRide(operation, driver)
+    }
+
+    if (operation.ride.status === codes.RIDE_FINISHED) {
+        return finishRide(operation, driver)
+    }
+
 }
 
 
-const acceptRide = (operation) => {
+const acceptRide = (operation, driver) => {
 
-    const driver = util.copy(cache.DRIVERS.get(operation.driver))
     if (driver.onRide) {
         driver.violations.push(codes.DRIVER_ON_RIDE)
         return driver
@@ -40,11 +47,8 @@ const acceptRide = (operation) => {
     return driver
 }
 
-const finishRide = (operation) => {
-
-    const driver = util.copy(cache.DRIVERS.get(operation.driver))
+const finishRide = (operation, driver) => {
     driver.onRide = false
     cache.DRIVERS.set(operation.driver, util.copy(driver))
-
     return driver
 }
