@@ -1,0 +1,26 @@
+{
+  "name": "driver-basic-operations",
+  "version": "1.0.0",
+  "description": "<p align= \"justify\"> The application needs to handle 4 operations, every operation has to be handled different according to its business rules and validations:",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yexhoo/driver-basic-operations.git"
+  },
+  "keywords": [
+    "driver",
+    "operations"
+  ],
+  "author": "yexhoo (Josue Nolasco Miranda)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yexhoo/driver-basic-operations/issues"
+  },
+  "homepage": "https://github.com/yexhoo/driver-basic-operations#readme",
+  "devDependencies": {
+    "mocha": "^7.1.0"
+  }
+}
