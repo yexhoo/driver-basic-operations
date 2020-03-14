@@ -1,0 +1,1 @@
+exports.copy = (sourceObj) => JSON.parse(JSON.stringify(sourceObj))
