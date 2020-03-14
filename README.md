@@ -23,5 +23,23 @@ This operation creates the driver account, the driver account is initialized wit
 5. status : string - default activated 
 6. violations : array[strings] 
 
-Business logic: 
+**Business logic:**
 1. Once a driver account is created, it can not be created again, if this happens add a violation called: ​**driver-already-created**.
+
+## 2. Accept a ride
+
+<p align= "justify">
+Accepts a ride and sets the driver on a ride to true, the ride has the following data: 
+
+1. ride : map: 
+    * a. user: string : id of the user 
+    * b. id: string: id of the ride 
+    * c. estimatedKm : string : estimated kilometers to arrive to the destination 
+    * d. etaMinutes: integer: estimated time in minutes to arrive to the destination 
+    * e. estimatedPrice: integer: estimated price of the ride 
+    * f. status: boolean: default start 
+2. driver: string : id of the driver 
+
+**Business logic:**
+1. Only and active user can accept rides, otherwise add a violation: ​**driver-banned**
+2. A driver can only accept a rider, if he is not already in one, otherwise add a violation: **driver-on-ride**
