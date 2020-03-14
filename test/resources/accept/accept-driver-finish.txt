@@ -1,0 +1,4 @@
+{"driver": "driver-1", "name": "Pronto test", "car": "Aveo 2014"}
+{"ride":{"id":"ride-1", "user":"user-1", "estimatedKm":12 ,"etaMinutes":25, "estimatedPrice":45, "status":"start" }, "driver": "driver-1"}
+{"ride":{"id":"ride-2", "user":"user-1", "estimatedKm":12 ,"etaMinutes":25, "estimatedPrice":45, "status":"start" }, "driver": "driver-1"}
+{"ride":{"id":"ride-1", "user":"user-1", "estimatedKm":12 ,"etaMinutes":25, "estimatedPrice":45, "status":"finished", "km":13, "min":20, "price":38 }, "driver": "driver-1"}

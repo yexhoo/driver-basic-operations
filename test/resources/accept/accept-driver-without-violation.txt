@@ -1,0 +1,2 @@
+{"ride":{"id":"ride-1", "user":"user-1", "estimatedKm":12 ,"etaMinutes":25, "estimatedPrice":45, "status":"start" }, "driver": "driver-1"}
+{"ride":{"id":"ride-2", "user":"user-1", "estimatedKm":12 ,"etaMinutes":25, "estimatedPrice":45, "status":"start" }, "driver": "driver-1"}
