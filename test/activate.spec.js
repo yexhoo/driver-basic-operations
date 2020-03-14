@@ -13,7 +13,7 @@ describe('Activate', () => {
         const operationsOutput = driver.process(operations)
 
         expect(operationsOutput.length).is.equal(operations.length)
-        expect(operationsOutput[0].status).is.equal(codes.ACTIVATED)
+        expect(operationsOutput[0].status).is.equal(codes.DRIVER_ACTIVATED)
         expect(operationsOutput[0].onRide).is.equal(false)
         expect(operationsOutput[0].violations.length).is.equal(0)
     });
@@ -28,11 +28,11 @@ describe('Activate', () => {
 
         expect(operationsOutput.length).is.equal(operations.length)
 
-        expect(firstDriver.status).is.equal(codes.ACTIVATED)
+        expect(firstDriver.status).is.equal(codes.DRIVER_ACTIVATED)
         expect(firstDriver.onRide).is.equal(false)
         expect(firstDriver.violations.length).is.equal(0)
 
-        expect(secondDriver.status).is.equal(codes.ACTIVATED)
+        expect(secondDriver.status).is.equal(codes.DRIVER_ACTIVATED)
         expect(secondDriver.onRide).is.equal(false)
         expect(secondDriver.violations.length).is.equal(1)
     });
@@ -48,15 +48,15 @@ describe('Activate', () => {
 
         expect(operationsOutput.length).is.equal(operations.length)
 
-        expect(aveo.status).is.equal(codes.ACTIVATED)
+        expect(aveo.status).is.equal(codes.DRIVER_ACTIVATED)
         expect(aveo.onRide).is.equal(false)
         expect(aveo.violations.length).is.equal(1)
 
-        expect(corsa.status).is.equal(codes.ACTIVATED)
+        expect(corsa.status).is.equal(codes.DRIVER_ACTIVATED)
         expect(corsa.onRide).is.equal(false)
         expect(corsa.violations.length).is.equal(1)
 
-        expect(chevy.status).is.equal(codes.ACTIVATED)
+        expect(chevy.status).is.equal(codes.DRIVER_ACTIVATED)
         expect(chevy.onRide).is.equal(false)
         expect(chevy.violations.length).is.equal(1)
     });

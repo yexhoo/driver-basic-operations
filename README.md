@@ -43,3 +43,15 @@ Accepts a ride and sets the driver on a ride to true, the ride has the following
 **Business logic:**
 1. Only and active user can accept rides, otherwise add a violation: ​**driver-banned**
 2. A driver can only accept a rider, if he is not already in one, otherwise add a violation: **driver-on-ride**
+
+## 3. Ban a driver
+
+<p align= "justify">
+Bans a driver, and changes the status of the driver to banned. 
+
+1. ban : boolean: status 
+2. driver: string : id of the driver 
+
+**Business logic:**
+1. Only active drivers can be banned, if a driver is already banned, add a violation: **driver-already-banned**
+2. If a driver is on a ride, he can’t be banned, if this happens add a violation: **driver-on-ride**

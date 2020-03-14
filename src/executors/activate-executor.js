@@ -6,7 +6,7 @@ exports.get = () => {
     return (operation) => {
 
         if (!cache.DRIVERS.has(operation.driver)) {
-            operation.status = "activated"
+            operation.status = codes.DRIVER_ACTIVATED
             operation.onRide = false
             operation.violations = []
             cache.DRIVERS.set(operation.driver, util.copy(operation))
