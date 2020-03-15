@@ -69,3 +69,197 @@ This operations is when a previous ride is finished, this is the same json as wh
 
 **Business logic:**
 1. If the ride was never started, add a violation : ​**ride-was-never-started**
+
+***
+### Run tests at localhost
+
+* Open a terminal
+
+```sh
+# Check latest node.js installation
+# installation steps
+$ sudo apt update
+$ sudo apt install nodejs
+$ sudo apt install npm
+
+# check version
+$ node -v
+v12.14.1
+
+# check version
+$ npm -v
+6.13.4
+```
+
+```sh
+# Check Mocha installation
+# Installation steps
+$ sudo npm i -g mocha
+
+# check version
+$ mocha --version
+7.1.0
+```
+
+```sh
+# check version Doker installation
+$ docker -v
+Docker version 18.09.7, build 2d0083d
+```
+
+```sh
+# check docker-compose installation
+$ docker-compose -v
+docker-compose version 1.21.2, build a133471
+```
+```sh
+#Clone repository
+$ git clone git@github.com:yexhoo/driver-basic-operations.git
+```
+```sh
+# Install dependencies.
+$ cd driver-basic-operations
+$ npm install
+```
+
+```sh
+# Run tests
+$ npm test
+
+# Output
+> mocha test/*.spec.js
+
+  Accept
+    ✓ Accept
+    ✓ Without driver without violation
+    ✓ On ride violation
+    ✓ Finish ride
+    ✓ Banned violation
+
+  Activate
+    ✓ Activated
+    ✓ Already created single violation
+    ✓ Already created multiple violation
+
+  Ban
+    ✓ On ride violation
+    ✓ Already banned violation
+
+  Finish
+    ✓ Ride was never started violation
+
+
+  11 passing (39ms)
+```
+***
+### Run application at Docker container.
+
+```sh
+# Build project
+$ docker-compose up --build
+
+# Output
+Creating network "driver-basic-operations_default" with the default driver
+Building app
+Step 1/7 : FROM node:12
+ ---> 7a73e56f893c
+Step 2/7 : WORKDIR /app
+ ---> Using cache
+ ---> 6d86250f19b6
+Step 3/7 : COPY ./package.json .
+ ---> Using cache
+ ---> 339fcb3f3bf7
+Step 4/7 : RUN npm install
+ ---> Using cache
+ ---> a96afa81cc74
+Step 5/7 : COPY . .
+ ---> b696c83be1dd
+Step 6/7 : EXPOSE 3000
+ ---> Running in c2eb2eb910d8
+Removing intermediate container c2eb2eb910d8
+ ---> 80031a06132b
+Step 7/7 : CMD npm start
+ ---> Running in 26871436c159
+Removing intermediate container 26871436c159
+ ---> 75a8a0d9386f
+Successfully built 75a8a0d9386f
+Successfully tagged driver-basic-operations_app:latest
+Creating driver-basic-operations_app_1 ... done
+Attaching to driver-basic-operations_app_1
+app_1  | 
+app_1  | > driver-basic-operations@1.0.0 dev /app
+app_1  | > nodemon src/app.js 
+app_1  | 
+app_1  | [nodemon] 2.0.2
+app_1  | [nodemon] to restart at any time, enter `rs`
+app_1  | [nodemon] watching dir(s): *.*
+app_1  | [nodemon] watching extensions: js,mjs,json
+app_1  | [nodemon] starting `node src/app.js`
+app_1  | Driver basic operations on port 3000
+```
+
+## **Endpoint**
+
+***
+**Validate**
+
+* **Description:** Allows to validate driver operations list.
+* **URL:** http://localhost:3000/validate
+* **Content-Type:** application/json
+
+* **Method:** `POST`
+* **Required:** 
+```javascript
+{
+	"operations":[]
+}
+```
+  
+*  **Body:** 
+```javascript
+{
+	"operations":[
+		{"driver": "driver-1", "name": "Pronto test", "car": "Aveo 2014"},
+		{"driver": "driver-1", "name": "Pronto test", "car": "Aveo 2014"}
+	]
+}
+```
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+```javascript
+[
+    {
+        "driver": "driver-1",
+        "name": "Pronto test",
+        "car": "Aveo 2014",
+        "status": "activated",
+        "onRide": false,
+        "violations": []
+    },
+    {
+        "driver": "driver-1",
+        "name": "Pronto test",
+        "car": "Aveo 2014",
+        "status": "activated",
+        "onRide": false,
+        "violations": [
+            "driver-already-created"
+        ]
+    }
+]
+```
+
+
+* **Sample Call:**
+
+```javascript
+{
+	"operations":[
+		{"driver": "driver-1", "name": "Pronto test", "car": "Aveo 2014"},
+		{"driver": "driver-1", "name": "Pronto test", "car": "Aveo 2014"}
+	]
+}
+```
+
