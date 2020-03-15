@@ -74,7 +74,6 @@ This operations is when a previous ride is finished, this is the same json as wh
 ### Run tests at localhost
 
 * Open a terminal
-
 ```sh
 # Check latest node.js installation
 # installation steps
@@ -90,7 +89,6 @@ v12.14.1
 $ npm -v
 6.13.4
 ```
-
 ```sh
 # Check Mocha installation
 # Installation steps
@@ -100,13 +98,11 @@ $ sudo npm i -g mocha
 $ mocha --version
 7.1.0
 ```
-
 ```sh
 # check version Doker installation
 $ docker -v
 Docker version 18.09.7, build 2d0083d
 ```
-
 ```sh
 # check docker-compose installation
 $ docker-compose -v
@@ -121,7 +117,6 @@ $ git clone git@github.com:yexhoo/driver-basic-operations.git
 $ cd driver-basic-operations
 $ npm install
 ```
-
 ```sh
 # Run tests
 $ npm test
@@ -154,6 +149,7 @@ $ npm test
 ***
 ### Run application at Docker container.
 
+* Open a terminal
 ```sh
 # Build project
 $ docker-compose up --build
@@ -202,11 +198,9 @@ app_1  | Driver basic operations on port 3000
 
 ***
 **Validate**
-
 * **Description:** Allows to validate driver operations list.
 * **URL:** http://localhost:3000/validate
 * **Content-Type:** application/json
-
 * **Method:** `POST`
 * **Required:** 
 ```javascript
@@ -214,7 +208,6 @@ app_1  | Driver basic operations on port 3000
 	"operations":[]
 }
 ```
-  
 *  **Body:** 
 ```javascript
 {
@@ -225,7 +218,6 @@ app_1  | Driver basic operations on port 3000
 }
 ```
 * **Success Response:**
-
   * **Code:** 200 <br />
     **Content:** 
 ```javascript
@@ -250,10 +242,7 @@ app_1  | Driver basic operations on port 3000
     }
 ]
 ```
-
-
 * **Sample Call:**
-
 ```javascript
 {
 	"operations":[
@@ -262,4 +251,3 @@ app_1  | Driver basic operations on port 3000
 	]
 }
 ```
-
