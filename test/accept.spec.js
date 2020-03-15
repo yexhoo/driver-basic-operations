@@ -50,7 +50,7 @@ describe('Accept', () => {
         testFile = resources.concat('finish-ride.txt')
         const operations = file.readFile(testFile)
         const output = driver.process(operations)
-
+        
         const op1 = output[0]
         const op2 = output[1]
         const op3 = output[2]
