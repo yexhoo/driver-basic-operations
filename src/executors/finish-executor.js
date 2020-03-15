@@ -3,6 +3,7 @@ const codes = require("../codes")
 const util = require("../util")
 
 exports.get = () => {
+
     return (operation) => {
 
         if (!cache.DRIVERS.has(operation.driver)) {
@@ -31,5 +32,6 @@ const finish = (operation) => {
 
     driver.onRide = false
     cache.DRIVERS.set(operation.driver, util.copy(driver))
+
     return driver
 }

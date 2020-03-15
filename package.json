@@ -4,6 +4,8 @@
   "description": "<p align= \"justify\"> The application needs to handle 4 operations, every operation has to be handled different according to its business rules and validations:",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js ",
     "test": "mocha test/*.spec.js"
   },
   "repository": {
@@ -22,6 +24,10 @@
   "homepage": "https://github.com/yexhoo/driver-basic-operations#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^7.1.0"
+    "mocha": "^7.1.0",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

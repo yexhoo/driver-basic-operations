@@ -3,6 +3,7 @@ const codes = require("../codes")
 const util = require("../util")
 
 exports.get = () => {
+
     return (operation) => {
 
         if (!cache.DRIVERS.has(operation.driver)) {
@@ -24,15 +25,13 @@ const accept = (operation) => {
         return driver
     }
 
-    if (operation.ride.status === codes.RIDE_START) {
-
-        if (driver.onRide) {
-            driver.violations.push(codes.DRIVER_ON_RIDE)
-            return driver
-        }
-
-        driver.onRide = true
-        cache.DRIVERS.set(operation.driver, util.copy(driver))
+    if (driver.onRide) {
+        driver.violations.push(codes.DRIVER_ON_RIDE)
         return driver
     }
+
+    driver.onRide = true
+    cache.DRIVERS.set(operation.driver, util.copy(driver))
+
+    return driver
 }
