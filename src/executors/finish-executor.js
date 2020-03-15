@@ -11,11 +11,11 @@ exports.get = () => {
             return operation
         }
 
-        return accept(operation)
+        return finish(operation)
     }
 }
 
-const accept = (operation) => {
+const finish = (operation) => {
 
     const driver = util.copy(cache.DRIVERS.get(operation.driver))
 
@@ -24,15 +24,12 @@ const accept = (operation) => {
         return driver
     }
 
-    if (operation.ride.status === codes.RIDE_START) {
-
-        if (driver.onRide) {
-            driver.violations.push(codes.DRIVER_ON_RIDE)
-            return driver
-        }
-
-        driver.onRide = true
-        cache.DRIVERS.set(operation.driver, util.copy(driver))
+    if (!driver.onRide) {
+        driver.violations.push(codes.RIDE_WAS_NEVER_STARTED)
         return driver
     }
+
+    driver.onRide = false
+    cache.DRIVERS.set(operation.driver, util.copy(driver))
+    return driver
 }

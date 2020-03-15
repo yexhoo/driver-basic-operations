@@ -7,8 +7,8 @@ describe('Ban', () => {
 
     let testFile, resources = __dirname.concat("/resources/ban/");
 
-    it('Drive on ride violation', () => {
-        testFile = resources.concat('drive-on-ride-violation.txt')
+    it('On ride violation', () => {
+        testFile = resources.concat('on-ride-violation.txt')
         const input = file.readFile(testFile)
         const output = driver.process(input)
 
@@ -17,15 +17,15 @@ describe('Ban', () => {
         const op3 = output[2]
 
         expect(op1.onRide).is.equal(false)
-        
+
         expect(op2.onRide).is.equal(true)
-        
+
         expect(op3.onRide).is.equal(true)
         expect(op3.violations[0]).is.equal(codes.DRIVER_ON_RIDE)
     });
 
-    it('Drive already banned', () => {
-        testFile = resources.concat('drive-already-banned.txt')
+    it('Already banned violation', () => {
+        testFile = resources.concat('already-banned-violation.txt')
         const input = file.readFile(testFile)
         const output = driver.process(input)
 
@@ -37,9 +37,9 @@ describe('Ban', () => {
         const op6 = output[5]
 
         expect(op1.onRide).is.equal(false)
-        
+
         expect(op2.onRide).is.equal(true)
-        
+
         expect(op3.onRide).is.equal(true)
         expect(op3.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op3.violations[0]).is.equal(codes.DRIVER_ON_RIDE)
