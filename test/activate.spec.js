@@ -7,7 +7,7 @@ describe('Activate', () => {
 
     let testFile, resources = __dirname.concat("/resources/activate/");
 
-    it('Driver activated', () => {
+    it('Activated', () => {
         testFile = resources.concat('activate.txt')
         const operations = file.readFile(testFile)
         const operationsOutput = driver.process(operations)
@@ -18,8 +18,8 @@ describe('Activate', () => {
         expect(operationsOutput[0].violations.length).is.equal(0)
     });
 
-    it('Driver already created', () => {
-        testFile = resources.concat('driver-already-created.txt')
+    it('Already created single violation', () => {
+        testFile = resources.concat('already-created-single-violation.txt')
         const operations = file.readFile(testFile)
         const operationsOutput = driver.process(operations)
 
@@ -37,8 +37,8 @@ describe('Activate', () => {
         expect(secondDriver.violations.length).is.equal(1)
     });
 
-    it('Driver already created multiple', () => {
-        testFile = resources.concat('driver-already-created-multiple.txt')
+    it('Already created multiple violation', () => {
+        testFile = resources.concat('already-created-multiple-violation.txt')
         const operations = file.readFile(testFile)
         const operationsOutput = driver.process(operations)
 

@@ -55,3 +55,17 @@ Bans a driver, and changes the status of the driver to banned.
 **Business logic:**
 1. Only active drivers can be banned, if a driver is already banned, add a violation: **driver-already-banned**
 2. If a driver is on a ride, he can’t be banned, if this happens add a violation: **driver-on-ride**
+
+## 4. Driver finished a ride
+
+<p align= "justify">
+This operations is when a previous ride is finished, this is the same json as when we start a ride, but we add more keys. 
+
+1. status: string: now is finished 
+2. ride: map - We add the following keys: 
+    * a. km: integer : the real kilometers the driver did to take the user to the destination 
+    * b. minutes: integer: the real minutes the driver traveled to arrive to the destination 
+    * c. price: integer: the real price of the ride. 
+
+**Business logic:**
+1. If the ride was never started, add a violation : ​**ride-was-never-started**

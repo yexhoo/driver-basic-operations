@@ -7,7 +7,7 @@ describe('Accept', () => {
 
     let testFile, resources = __dirname.concat("/resources/accept/");
 
-    it('Accept driver', () => {
+    it('Accept', () => {
         testFile = resources.concat('accept.txt')
         const operations = file.readFile(testFile)
         const output = driver.process(operations)
@@ -19,8 +19,8 @@ describe('Accept', () => {
         expect(op2.onRide).is.equal(true)
     });
 
-    it('Accept without driver without violation', () => {
-        testFile = resources.concat('accept-driver-without-violation.txt')
+    it('Without driver without violation', () => {
+        testFile = resources.concat('without-violation.txt')
         const operations = file.readFile(testFile)
         const output = driver.process(operations)
 
@@ -31,8 +31,8 @@ describe('Accept', () => {
         expect(op2.violations[0]).is.equal(codes.DRIVER_DOES_NOT_EXIST)
     });
 
-    it('Accept driver on ride violation', () => {
-        testFile = resources.concat('accept-driver-on-ride-violation.txt')
+    it('On ride violation', () => {
+        testFile = resources.concat('on-ride-violation.txt')
         const operations = file.readFile(testFile)
         const output = driver.process(operations)
 
@@ -46,8 +46,8 @@ describe('Accept', () => {
         expect(op3.violations[0]).is.equal(codes.DRIVER_ON_RIDE)
     });
 
-    it('Accept finish ride', () => {
-        testFile = resources.concat('accept-driver-finish.txt')
+    it('Finish ride', () => {
+        testFile = resources.concat('finish-ride.txt')
         const operations = file.readFile(testFile)
         const output = driver.process(operations)
 
@@ -59,23 +59,23 @@ describe('Accept', () => {
         expect(op1.onRide).is.equal(false)
         expect(op1.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op1.violations.length).is.equal(0)
-        
+
         expect(op2.onRide).is.equal(true)
         expect(op1.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op1.violations.length).is.equal(0)
-        
+
         expect(op3.onRide).is.equal(true)
         expect(op3.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op3.violations.length).is.equal(1)
         expect(op3.violations[0]).is.equal(codes.DRIVER_ON_RIDE)
-        
+
         expect(op4.onRide).is.equal(false)
         expect(op4.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op4.violations.length).is.equal(0)
     });
 
-    it('All cases', () => {
-        testFile = resources.concat('all-cases.txt')
+    it('Banned violation', () => {
+        testFile = resources.concat('banned-violation.txt')
         const operations = file.readFile(testFile)
         const output = driver.process(operations)
 
@@ -89,16 +89,16 @@ describe('Accept', () => {
         expect(op1.onRide).is.equal(false)
         expect(op1.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op1.violations.length).is.equal(0)
-        
+
         expect(op2.onRide).is.equal(true)
         expect(op1.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op1.violations.length).is.equal(0)
-        
+
         expect(op3.onRide).is.equal(true)
         expect(op3.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op3.violations.length).is.equal(1)
         expect(op3.violations[0]).is.equal(codes.DRIVER_ON_RIDE)
-        
+
         expect(op4.onRide).is.equal(false)
         expect(op4.status).is.equal(codes.DRIVER_STATUS_ACTIVATED)
         expect(op4.violations.length).is.equal(0)
@@ -112,5 +112,4 @@ describe('Accept', () => {
         expect(op6.violations.length).is.equal(1)
         expect(op6.violations[0]).is.equal(codes.DRIVER_BANNED)
     });
-
 });

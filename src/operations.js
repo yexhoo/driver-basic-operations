@@ -2,14 +2,17 @@ const unknowExecutor = require("./executors/unknown-executor")
 const activateExecutor = require("./executors/activate-executor")
 const acceptExecutor = require("./executors/accept-executor")
 const banExecutor = require("./executors/ban-executor")
+const finishExecutor = require("./executors/finish-executor")
 
 const unknow = { props: [], executor: unknowExecutor.get() }
 const activate = { props: ["driver", "name", "car"], executor: activateExecutor.get() }
+const finish = { props: ["ride", "driver", "km", "minutes", "price"], executor: finishExecutor.get() }
 const accept = { props: ["ride", "driver"], executor: acceptExecutor.get() }
 const ban = { props: ["ban", "driver"], executor: banExecutor.get() }
 
 const MAP = new Map()
     .set("activate", activate)
+    .set("finish", finish)
     .set("accept", accept)
     .set("ban", ban)
 
