@@ -71,6 +71,11 @@ This operations is when a previous ride is finished, this is the same json as wh
 1. If the ride was never started, add a violation : ​**ride-was-never-started**
 
 ***
+### Project description
+
+
+
+***
 ### Run tests at localhost
 
 * Open a terminal
@@ -149,8 +154,10 @@ $ npm test
 ***
 ### Run application at Docker container.
 
-* Open a terminal
+* Open a terminal at root of project
 ```sh
+$ cd driver-basic-operations
+
 # Build project
 $ docker-compose up --build
 
