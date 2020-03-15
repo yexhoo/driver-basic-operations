@@ -71,11 +71,6 @@ This operations is when a previous ride is finished, this is the same json as wh
 1. If the ride was never started, add a violation : ​**ride-was-never-started**
 
 ***
-### Project description
-
-
-
-***
 ### Run tests at localhost
 
 * Open a terminal
@@ -202,8 +197,6 @@ app_1  | Driver basic operations on port 3000
 ```
 
 ## **Endpoint**
-
-***
 **Validate**
 * **Description:** Allows to validate driver operations list.
 * **URL:** http://localhost:3000/validate
