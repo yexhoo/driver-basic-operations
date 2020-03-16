@@ -242,6 +242,26 @@ app_1  | Driver basic operations on port 3000
     }
 ]
 ```
+
+* **Error Response:**
+
+  * **Code:** 400 Bad Request <br />
+    **Content:** 
+```javascript
+  {
+    "error": "operations attribute is required",
+    "detail": ""
+  }
+```
+  * **Code:** 400 Bad Request <br />
+    **Content:**
+```javascript
+  {
+    "error": "Something was wrong, please verify your JSON",
+    "detail": "SyntaxError: Unexpected token { in JSON at position 88"
+  }
+```    
+
 * **Sample Call:**
 ```javascript
 {
