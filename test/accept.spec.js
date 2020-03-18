@@ -19,7 +19,7 @@ describe('Accept', () => {
         expect(op2.onRide).is.equal(true)
     });
 
-    it('Without driver without violation', () => {
+    it('Without driver violation', () => {
         testFile = resources.concat('without-violation.txt')
         const operations = file.readFile(testFile)
         const output = driver.process(operations)

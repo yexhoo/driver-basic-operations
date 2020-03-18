@@ -1,15 +1,15 @@
 const operations = require("./operations")
 
-exports.getExecutor = (operation) => {
+exports.getStrategy = (operation) => {
 
   for (type of operations.MAP.keys()) {
     const operationType = operations.MAP.get(type)
     if (operationType.props.every(n => this.hasOwnDeepProperty(operation, n))) {
-      return operationType.executor
+      return operationType
     }
   }
 
-  return operations.UNkNOW_OPERATION.executor
+  return operations.UNkNOW_OPERATION
 }
 
 exports.hasOwnDeepProperty = (obj, prop) => {
