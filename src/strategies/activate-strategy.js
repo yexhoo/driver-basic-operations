@@ -14,10 +14,10 @@ exports.get = () => {
             cache.DRIVERS.set(operation.driver, util.copy(operation))
 
             return operation
-        } 
-        
+        }
+
         operation = util.copy(cache.DRIVERS.get(operation.driver))
-        operation.violations.push(codes.DRIVER_ALREADY_CREATED)    
+        operation.violations.push(codes.DRIVER_ALREADY_CREATED)
 
         return operation
     }
